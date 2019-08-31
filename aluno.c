@@ -19,9 +19,12 @@ Aluno * aluno_criar()
 	}
 	return aluno;
 }
-void aluno_apagar(Aluno * aluno)
+boolean aluno_apagar(Aluno * aluno)
 {
 	free(aluno);
+	if(aluno==NULL)
+		return TRUE;
+	return FALSE;
 }
 void aluno_imprimir(Aluno * aluno)
 {

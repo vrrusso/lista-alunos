@@ -16,5 +16,8 @@ int main(void)
 	aluno_apagar(aluno);
 	lista_imprimir(lista);
 	lista_apagar(lista);
+
+	printf("vlw Russo");	
+	
 	return 0;
 }

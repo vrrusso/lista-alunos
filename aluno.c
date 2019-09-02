@@ -52,3 +52,12 @@ float aluno_get_media(Aluno * aluno)
 {
 	return (aluno->nota1+aluno->nota2)/2;
 }
+boolean aluno_atribuir(Aluno * aluno_alvo, Aluno * aluno_origem)//melhorar depois
+{
+	if(aluno_alvo != NULL && aluno_origem!=NULL)
+	{
+		aluno_set(aluno_alvo,aluno_origem->id_aluno,aluno_origem->horas,aluno_origem->nota1,aluno_origem->nota2);
+		return TRUE;
+	}
+	return FALSE;
+}

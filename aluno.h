@@ -11,5 +11,5 @@ void aluno_set(Aluno * aluno, int id_aluno, float horas, float nota1, float nota
 int aluno_get_id(Aluno * aluno);
 float aluno_get_horas(Aluno * aluno);
 float aluno_get_media(Aluno * aluno);
-   
+boolean aluno_atribuir(Aluno * aluno_alvo,Aluno * aluno_origem);   
 #endif

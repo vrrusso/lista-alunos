@@ -29,17 +29,47 @@ Lista * lista_criar()
 boolean lista_apagar(Lista ** lista)
 {
 	//programar depois, precisa desalocar Alunos(usar função) nodes e a lista em si
+	
 	return TRUE;
 }
 boolean lista_cheia(Lista * lista)
 {
-	//programar depois--pesquisar como verificar memória
-	return TRUE;
+	Node * no=(Node *)malloc(sizeof(Node));
+	if(no==NULL)
+	{	
+		free(no);
+		return TRUE;
+	}
+	free(no);
+	return FALSE;
 }
 boolean lista_vazia(Lista * lista)
 {
 	if(lista->inicio==NULL)
 		return TRUE;
+	return FALSE;
+}
+boolean lista_inserir(Lista * lista, Item * i)
+{
+	if((!lista_cheia(lista)) && lista != NULL)
+	{
+		Node * no=(Node *)malloc(sizeof(no));
+		no->item=aluno_criar();
+		aluno_atribuir(no->item,i);
+		aluno_imprimir(no->item);
+		if(lista_vazia(lista))
+		{
+			lista->inicio=no;		
+		}
+		else
+		{
+			lista->fim->next=no;
+		}
+		no->next=NULL;
+		lista->fim=no;
+		lista->tamanho++;
+		return TRUE;
+	}
 	return FALSE;
 }
 

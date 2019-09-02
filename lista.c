@@ -28,8 +28,7 @@ Lista * lista_criar()
 }
 boolean lista_apagar(Lista ** lista)
 {
-	//programar depois, precisa desalocar Alunos(usar função) nodes e a lista em si
-	
+	//programar depois, precisa desalocar Alunos(usar função) nodes e a lista em si	
 	return TRUE;
 }
 boolean lista_cheia(Lista * lista)

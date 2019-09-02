@@ -10,8 +10,11 @@ int main(void)
 	scanf("%d %f %f %f",&id,&horas,&nota1,&nota2);
 	aluno_set(aluno,id,horas,nota1,nota2);
 	printf("%d %f %f\n",aluno_get_id(aluno),aluno_get_horas(aluno),aluno_get_media(aluno));
-	aluno_imprimir(aluno);
+	//aluno_imprimir(aluno);
+	printf("|%d|",lista_inserir(lista,aluno));	
 	printf("|%d|",lista_inserir(lista,aluno));
 	aluno_apagar(aluno);
+	lista_imprimir(lista);
+	lista_apagar(lista);
 	return 0;
 }

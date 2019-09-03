@@ -98,3 +98,62 @@ void lista_imprimir(Lista * lista){
 	}
 	printf("A lista está vazia ou não foi iniciada!\n");
 }
+
+//falta testar os 3:
+boolean lista_remove_item(Lista * lista, int key){
+	Node *atual = lista->inicio;
+	Node *aux;
+	//caso precise remover o primeiro da lista
+	while(aluno_get_id(atual->item) == key){
+		aux = atual;
+		lista->inicio = aux->next;
+		free(aux);
+		atual = lista->inicio;
+	}
+	//demais remoçoes
+	while(atual != NULL){
+		if(aluno_get_id(atual->next->item) == key){
+			aux =  atual->next->item;
+			atual->next = aux->next;
+			free(aux);
+		}
+		atual = atual->next;
+	}
+}
+
+void lista_imprimir_status(Lista * lista){
+	Node *atual = lista->inicio;
+	int id;
+
+	if(atual == NULL){
+		printf("Nenhum registro encontado");
+		return;
+	}
+	printf("Alunos:   Status: ")
+	while(atual!=NULL){
+		id = aluno_get_id(atual->item);
+
+		if(aluno_get_media(atual->item) >= 5.00) printf("%d - Aprovado\n", id);
+		else printf("%d - Reprovado\n", id);
+
+		atual = atual->next;
+	}
+	return;
+}
+
+float lista_media_horas(Lista * lista){
+	Node *atual = lista->inicio;
+	flaot soma = 0;
+
+	if((atual == NULL) || (lista->tamanho == 0)){
+		printf("Nenhum registro encontado");
+		return -1;
+	}
+
+	while(atual!=NULL){
+		soma += aluno_get_horas(atual->item);
+		atual = atual->next;
+	}
+
+	return (soma/(float)lista->tamanho);
+}

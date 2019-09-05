@@ -64,7 +64,7 @@ int main(void){
 		scanf("%d %f %f %f",&id,&horas,&nota1,&nota2);
 		aluno_set(aluno,id,horas,nota1,nota2);
 		printf("%d %f %f\n",aluno_get_id(aluno),aluno_get_horas(aluno),aluno_get_media(aluno));
-		aluno_imprimir(aluno);
+		//aluno_imprimir(aluno);
 		printf("|%d|\n",lista_inserir(lista,aluno));
 	}
 	printf("Horas de estudo(TURMA): %.2f\n", lista_media_horas(lista));

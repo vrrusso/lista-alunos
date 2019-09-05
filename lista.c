@@ -66,7 +66,7 @@ boolean lista_vazia(Lista * lista){
 
 boolean lista_inserir(Lista * lista, Item * i){
 	if((!lista_cheia(lista)) && lista != NULL){
-		Node * no=(Node *)malloc(sizeof(no));
+		Node * no=(Node *)malloc(sizeof(Node));
 		no->item=aluno_criar();
 		aluno_atribuir(no->item,i);
 
@@ -118,14 +118,17 @@ boolean lista_remove_item(Lista * lista, int key){
 		free(aux);
 		atual = lista->inicio;
 		flag = TRUE;
+        lista->tamanho--;
 	}
 	//demais remoçoes
 	while(atual != NULL){
 		if(aluno_get_id(atual->next->item) == key){
 			aux =  atual->next;
 			atual->next = aux->next;
-			free(aux);
+			aluno_apagar(aux->item);
+            free(aux);
 			flag = TRUE;
+            lista->tamanho--;
 		}
 		atual = atual->next;
 	}

@@ -10,7 +10,7 @@ struct aluno_
 };
 
 Aluno * aluno_criar(){
-	Aluno * aluno=(Aluno *)malloc(sizeof(aluno));
+	Aluno * aluno=(Aluno *)malloc(sizeof(Aluno));
 	if(aluno==NULL)
 	{
 		printf("Sem memoria");

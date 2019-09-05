@@ -71,7 +71,8 @@ int main(void){
 	lista_imprimir_status(lista);
 	aluno_apagar(aluno);
 	lista_imprimir(lista);
-	printf("|%d|\n", lista_remove_item(lista, id));
+	printf("|%d|\n", lista_remove_item(lista, 15));
+	lista_imprimir(lista);
 	lista_apagar(lista);
 
 

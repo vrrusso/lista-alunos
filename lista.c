@@ -40,6 +40,8 @@ boolean lista_apagar(Lista * lista){
 			p=next;
 		}while(p != NULL);
 		free(lista);
+	}else{
+		free(lista);
 	}
 	if(lista==NULL)
 		return TRUE;
@@ -121,7 +123,7 @@ boolean lista_remove_item(Lista * lista, int key){
         lista->tamanho--;
 	}
 	//demais remoçoes
-	while(atual != NULL){
+	while(atual!=NULL && atual->next != NULL){
 		if(aluno_get_id(atual->next->item) == key){
 			aux =  atual->next;
 			atual->next = aux->next;

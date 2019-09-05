@@ -103,22 +103,33 @@ void lista_imprimir(Lista * lista){
 boolean lista_remove_item(Lista * lista, int key){
 	Node *atual = lista->inicio;
 	Node *aux;
+	boolean flag = FALSE;
+
+	if(atual == NULL){
+		printf("Nenhum registro encontado\n");
+		return flag;
+	}
+
 	//caso precise remover o primeiro da lista
-	while(aluno_get_id(atual->item) == key){
+	while(atual!=NULL && aluno_get_id(atual->item) == key){
 		aux = atual;
 		lista->inicio = aux->next;
+		aluno_apagar(aux->item);
 		free(aux);
 		atual = lista->inicio;
+		flag = TRUE;
 	}
 	//demais remoçoes
 	while(atual != NULL){
 		if(aluno_get_id(atual->next->item) == key){
-			aux =  atual->next->item;
+			aux =  atual->next;
 			atual->next = aux->next;
 			free(aux);
+			flag = TRUE;
 		}
 		atual = atual->next;
 	}
+	return flag;
 }
 
 void lista_imprimir_status(Lista * lista){
@@ -126,15 +137,15 @@ void lista_imprimir_status(Lista * lista){
 	int id;
 
 	if(atual == NULL){
-		printf("Nenhum registro encontado");
+		printf("Nenhum registro encontado\n");
 		return;
 	}
-	printf("Alunos:   Status: ")
+	printf("Alunos:   Status: \n");
 	while(atual!=NULL){
 		id = aluno_get_id(atual->item);
 
-		if(aluno_get_media(atual->item) >= 5.00) printf("%d - Aprovado\n", id);
-		else printf("%d - Reprovado\n", id);
+		if(aluno_get_media(atual->item) >= 5.00) printf("%d ------ Aprovado\n", id);
+		else printf("%d ------ Reprovado\n", id);
 
 		atual = atual->next;
 	}
@@ -143,7 +154,7 @@ void lista_imprimir_status(Lista * lista){
 
 float lista_media_horas(Lista * lista){
 	Node *atual = lista->inicio;
-	flaot soma = 0;
+	float soma = 0;
 
 	if((atual == NULL) || (lista->tamanho == 0)){
 		printf("Nenhum registro encontado");

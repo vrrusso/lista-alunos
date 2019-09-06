@@ -124,6 +124,9 @@ boolean lista_remove_item(Lista * lista, int key){
 	//demais remoçoes
 	while(atual!=NULL && atual->next != NULL){
 		if(aluno_get_id(atual->next->item) == key){
+			if(atual->next->next == NULL){
+				lista->fim = atual;
+			}
 			aux =  atual->next;
 			atual->next = aux->next;
 			aluno_apagar(aux->item);
@@ -152,6 +155,7 @@ void lista_imprimir_status(Lista * lista){
 
 		atual = atual->next;
 	}
+	printf("\n");
 	return;
 }
 

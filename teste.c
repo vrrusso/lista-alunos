@@ -28,7 +28,7 @@ boolean  entrada_dados(Lista * lista){
     Aluno * aluno_aux = aluno_criar();
     int id;
     float horas,nota1,nota2;
-    printf("Id do Aluno:");scanf("%d",&id);
+    printf("\nId do Aluno:");scanf("%d",&id);
     printf("Horas de Estudo:");scanf("%f",&horas);
     printf("Nota da Primeira Avaliação:");scanf("%f",&nota1);
     printf("Nota da Segunda Avaliação:");scanf("%f",&nota2);
@@ -40,7 +40,7 @@ boolean  entrada_dados(Lista * lista){
 
 boolean remover_dados(Lista *lista){
 	int id;
-	printf("ID do aluno a ser removido: "); scanf("%d", &id);
+	printf("\nID do aluno a ser removido: "); scanf("%d", &id);
 
 	return lista_remove_item(lista, id);
 }
@@ -48,7 +48,7 @@ boolean remover_dados(Lista *lista){
 void horas_estudo(Lista *lista){
 	float h = lista_media_horas(lista);
 	if(h >= 0){
-		printf("Tempo de estudo medio da turma: %.2f horas.\n", h);
+		printf("\nTempo de estudo medio da turma: %.2f horas.\n\n", h);
 	}
 }
 
@@ -61,21 +61,21 @@ int main(void){
 
  			case (1):
  				if(entrada_dados(lista)==1)
-          printf("Aluno inserido com sucesso no fim da lista!\n");
+          printf("\nAluno inserido com sucesso no fim da lista!\n\n");
  			break;
 
  			case (2):
  				if(remover_dados(lista) == 1)
-					printf("Aluno removido da lista com sucesso!\n");
+					printf("\nAluno removido da lista com sucesso!\n\n");
  			break;
 
  			case (3):
- 				printf("Todos os registros:\n");
+ 				printf("\nTodos os registros:\n\n");
           lista_imprimir(lista);
  			break;
 
  			case (4):
- 				printf("Relatório de Aprovação:\n");
+ 				printf("\nRelatório de Aprovação:\n");
 				lista_imprimir_status(lista);
  			break;
 
@@ -84,7 +84,7 @@ int main(void){
  			break;
 
  			default:
- 				printf("Obrigado por utilizar nosso programa!!\n");
+ 				printf("\nObrigado por utilizar nosso programa!!\n");
  			break;
  		}
     }while(opcao != 6);

@@ -101,7 +101,6 @@ void lista_imprimir(Lista * lista){
 	printf("A lista está vazia ou não foi iniciada!\n");
 }
 
-//falta testar os 3:
 boolean lista_remove_item(Lista * lista, int key){
 	Node *atual = lista->inicio;
 	Node *aux;
@@ -120,7 +119,7 @@ boolean lista_remove_item(Lista * lista, int key){
 		free(aux);
 		atual = lista->inicio;
 		flag = TRUE;
-        lista->tamanho--;
+      lista->tamanho--;
 	}
 	//demais remoçoes
 	while(atual!=NULL && atual->next != NULL){
@@ -131,8 +130,7 @@ boolean lista_remove_item(Lista * lista, int key){
             free(aux);
 			flag = TRUE;
             lista->tamanho--;
-		}
-		atual = atual->next;
+		}else atual = atual->next;
 	}
 	return flag;
 }

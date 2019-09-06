@@ -23,12 +23,12 @@ int menu(){ // menu dando erro quando se digita
 	}while(op<1 || op>6);
 	return op;
 }
-boolean  entrada_dados(Lista * lista)
-{
+
+boolean  entrada_dados(Lista * lista){
     Aluno * aluno_aux = aluno_criar();
     int id;
     float horas,nota1,nota2;
-    printf("Id do Aluno:");scanf("%d",&id); 
+    printf("Id do Aluno:");scanf("%d",&id);
     printf("Horas de Estudo:");scanf("%f",&horas);
     printf("Nota da Primeira Avaliação:");scanf("%f",&nota1);
     printf("Nota da Segunda Avaliação:");scanf("%f",&nota2);
@@ -37,6 +37,21 @@ boolean  entrada_dados(Lista * lista)
     aluno_apagar(aluno_aux);
     return teste;
 }
+
+boolean remover_dados(Lista *lista){
+	int id;
+	printf("ID do aluno a ser removido: "); scanf("%d", &id);
+
+	return lista_remove_item(lista, id);
+}
+
+void horas_estudo(Lista *lista){
+	float h = lista_media_horas(lista);
+	if(h >= 0){
+		printf("Tempo de estudo medio da turma: %.2f horas.\n", h);
+	}
+}
+
 int main(void){
     int opcao;
     Lista * lista = lista_criar();
@@ -46,27 +61,29 @@ int main(void){
 
  			case (1):
  				if(entrada_dados(lista)==1)
-                    printf("Aluno inserido com sucesso no fim da lista!\n");
+          printf("Aluno inserido com sucesso no fim da lista!\n");
  			break;
 
  			case (2):
- 				printf("Opção - 2\n");
+ 				if(remover_dados(lista) == 1)
+					printf("Aluno removido da lista com sucesso!\n");
  			break;
 
  			case (3):
- 			    printf("Todos os registros:\n");
-                lista_imprimir(lista);	
+ 				printf("Todos os registros:\n");
+          lista_imprimir(lista);
  			break;
 
  			case (4):
- 				printf("Opção - 4\n");
+ 				printf("Relatório de Aprovação:\n");
+				lista_imprimir_status(lista);
  			break;
 
  			case (5):
- 				printf("Opção - 5\n");
+				horas_estudo(lista);
  			break;
 
- 			default:	
+ 			default:
  				printf("Obrigado por utilizar nosso programa!!\n");
  			break;
  		}

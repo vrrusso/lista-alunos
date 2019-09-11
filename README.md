@@ -16,4 +16,5 @@ além disso tentou se usar o TAD Lista com um mínimo de modificaçẽs possíve
 Para rodar o projeto(Linux) basta baixar os arquivos numa pasta e e digitar o comando make.
 Caso seja feita alguma modificação, basta digitar o comando make clean e em seguida make.
 
-Projeto também disponível em:
+Para clonar o projeto:
+git clone git@github.com:vrrusso/lista-alunos.git

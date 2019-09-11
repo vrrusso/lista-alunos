@@ -14,7 +14,7 @@ struct lista_{
 	Node * fim;
 	int tamanho;
 };
-
+//aloca uma struct lista na heap e inicializa valores
 Lista * lista_criar(){
 	Lista * lista =(Lista *)malloc(sizeof(Lista));
 	if(lista != NULL)
@@ -25,7 +25,7 @@ Lista * lista_criar(){
 	}
 	return(lista);
 }
-
+//desaloca todos os nodes e depois desaloca alista
 boolean lista_apagar(Lista * lista){
 	//programar depois, precisa desalocar Alunos(usar função) nodes e a lista em si
 	if(!lista_vazia(lista) && lista != NULL)
@@ -47,7 +47,7 @@ boolean lista_apagar(Lista * lista){
 		return TRUE;
 	return FALSE;
 }
-
+//verifica se ainda ha espeço na memoria
 boolean lista_cheia(Lista * lista){
 	Node * no=(Node *)malloc(sizeof(Node));
 
@@ -59,13 +59,13 @@ boolean lista_cheia(Lista * lista){
 	free(no);
 	return FALSE;
 }
-
+//verifica se ha elementos na lista
 boolean lista_vazia(Lista * lista){
 	if(lista->inicio==NULL)
 		return TRUE;
 	return FALSE;
 }
-
+//insere um elemento na lista caso ela exita e nao esteja cheia
 boolean lista_inserir(Lista * lista, Item * i){
 	if((!lista_cheia(lista)) && lista != NULL){
 		Node * no=(Node *)malloc(sizeof(Node));
@@ -85,7 +85,7 @@ boolean lista_inserir(Lista * lista, Item * i){
 	}
 	return FALSE;
 }
-
+// imprime todos os elementos da lista
 void lista_imprimir(Lista * lista){
 	Node * p;
 
@@ -100,13 +100,13 @@ void lista_imprimir(Lista * lista){
 	}
 	printf("A lista está vazia ou não foi iniciada!\n");
 }
-
+//busca os itens por meio do id e deleta todos os que tiverem o id especificado
 boolean lista_remove_item(Lista * lista, int key){
 	Node *atual = lista->inicio;
 	Node *aux;
 	boolean flag = FALSE;
 
-	if(atual == NULL){
+	if(atual == NULL){//caso alista esteja vazia
 		printf("Nenhum registro encontado\n");
 		return flag;
 	}
@@ -116,6 +116,7 @@ boolean lista_remove_item(Lista * lista, int key){
 		aux = atual;
 		lista->inicio = aux->next;
 		aluno_apagar(aux->item);
+		aux->next = NULL;
 		free(aux);
 		atual = lista->inicio;
 		flag = TRUE;
@@ -130,6 +131,7 @@ boolean lista_remove_item(Lista * lista, int key){
 			aux =  atual->next;
 			atual->next = aux->next;
 			aluno_apagar(aux->item);
+				aux->next = NULL;
             free(aux);
 			flag = TRUE;
             lista->tamanho--;
@@ -137,19 +139,19 @@ boolean lista_remove_item(Lista * lista, int key){
 	}
 	return flag;
 }
-
+//imprime a situação de todos os alunos da lista (Aprovado ou Reprovado)
 void lista_imprimir_status(Lista * lista){
 	Node *atual = lista->inicio;
 	int id;
 
-	if(atual == NULL){
+	if(atual == NULL){//caso a lista esteja vazia
 		printf("Nenhum registro encontado\n");
 		return;
 	}
 	printf("Alunos:   Status: \n");
 	while(atual!=NULL){
 		id = aluno_get_id(atual->item);
-
+		//mosta a situação baseado na media
 		if(aluno_get_media(atual->item) >= 5.00) printf("%d ------ Aprovado\n", id);
 		else printf("%d ------ Reprovado\n", id);
 
@@ -158,7 +160,7 @@ void lista_imprimir_status(Lista * lista){
 	printf("\n");
 	return;
 }
-
+//calcula e mostra a media de horas de estudo de todos os alunos da lista
 float lista_media_horas(Lista * lista){
 	Node *atual = lista->inicio;
 	float soma = 0;

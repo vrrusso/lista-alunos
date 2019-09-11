@@ -2,7 +2,8 @@
 #include "aluno.h"
 #include "lista.h"
 
-int menu(){ // menu dando erro quando se digita
+//função de menu que mostra as opçoes e retorna o numero da opçao escolhida
+int menu(){
 	int op = 0;
     char aux;
 	do{
@@ -23,7 +24,7 @@ int menu(){ // menu dando erro quando se digita
 	}while(op<1 || op>6);
 	return op;
 }
-
+//recebe os dados de um alino e o insere no final da lista
 boolean  entrada_dados(Lista * lista){
     Aluno * aluno_aux = aluno_criar();
     int id;
@@ -37,14 +38,14 @@ boolean  entrada_dados(Lista * lista){
     aluno_apagar(aluno_aux);
     return teste;
 }
-
+//recebe o id do aluno a ser apagado e chama a funçã que deleta alunos
 boolean remover_dados(Lista *lista){
 	int id;
 	printf("\nID do aluno a ser removido: "); scanf("%d", &id);
 
 	return lista_remove_item(lista, id);
 }
-
+//printa o tempo medio de estudo da turma
 void horas_estudo(Lista *lista){
 	float h = lista_media_horas(lista);
 	if(h >= 0){
@@ -55,63 +56,41 @@ void horas_estudo(Lista *lista){
 int main(void){
     int opcao;
     Lista * lista = lista_criar();
-    do
+    do//loop para rodar o programa até que o usuario queira sair
     {
  		switch (opcao = menu()){
 
- 			case (1):
+ 			case (1)://Inserir Registro
  				if(entrada_dados(lista)==1)
           printf("\nAluno inserido com sucesso no fim da lista!\n\n");
  			break;
 
- 			case (2):
+ 			case (2)://Remover Registro
  				if(remover_dados(lista) == 1)
 					printf("\nAluno removido da lista com sucesso!\n\n");
  			break;
 
- 			case (3):
+ 			case (3)://Imprimir Registros
  				printf("\nTodos os registros:\n\n");
           lista_imprimir(lista);
  			break;
 
- 			case (4):
+ 			case (4)://Relatório de Aprovação
  				printf("\nRelatório de Aprovação:\n");
 				lista_imprimir_status(lista);
  			break;
 
- 			case (5):
+ 			case (5)://Horas de estudo(Média)
 				horas_estudo(lista);
  			break;
 
- 			default:
+ 			default://Sair
  				printf("\nObrigado por utilizar nosso programa!!\n");
  			break;
  		}
     }while(opcao != 6);
-    lista_apagar(lista);
+    lista_apagar(lista);//desaloca a lista
 
 
-//teste:
-/*
-	Aluno * aluno = aluno_criar();
-	Lista * lista=lista_criar();
-	int id;
-	float horas,nota1,nota2;
-	for(int i=0; i<5; i++){
-		scanf("%d %f %f %f",&id,&horas,&nota1,&nota2);
-		aluno_set(aluno,id,horas,nota1,nota2);
-		printf("%d %f %f\n",aluno_get_id(aluno),aluno_get_horas(aluno),aluno_get_media(aluno));
-		//aluno_imprimir(aluno);
-		printf("|%d|\n",lista_inserir(lista,aluno));
-	}
-	printf("Horas de estudo(TURMA): %.2f\n", lista_media_horas(lista));
-	lista_imprimir_status(lista);
-	aluno_apagar(aluno);
-	lista_imprimir(lista);
-	printf("|%d|\n", lista_remove_item(lista, 15));
-	lista_imprimir(lista);
-	lista_apagar(lista);
-
-*/
 	return 0;
 }

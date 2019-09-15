@@ -26,17 +26,17 @@ int menu(){
 }
 //recebe os dados de um alino e o insere no final da lista
 boolean  entrada_dados(Lista * lista){
-    Aluno * aluno_aux = aluno_criar();
-    int id;
-    float horas,nota1,nota2;
-    printf("\nId do Aluno:");scanf("%d",&id);
-    printf("Horas de Estudo:");scanf("%f",&horas);
-    printf("Nota da Primeira Avaliação:");scanf("%f",&nota1);
-    printf("Nota da Segunda Avaliação:");scanf("%f",&nota2);
-    aluno_set(aluno_aux,id,horas,nota1,nota2);
-    boolean teste = lista_inserir(lista,aluno_aux);
-    aluno_apagar(aluno_aux);
-    return teste;
+   	Aluno * aluno_aux = aluno_criar();
+    	int id;
+    	float horas,nota1,nota2;
+    	printf("\nId do Aluno:");scanf("%d",&id);
+    	printf("Horas de Estudo:");scanf("%f",&horas);
+    	printf("Nota da Primeira Avaliação:");scanf("%f",&nota1);
+    	printf("Nota da Segunda Avaliação:");scanf("%f",&nota2);
+    	aluno_set(aluno_aux,id,horas,nota1,nota2);
+    	boolean teste = lista_inserir(lista,aluno_aux);
+    	aluno_apagar(&aluno_aux);
+	return teste;
 }
 //recebe o id do aluno a ser apagado e chama a funçã que deleta alunos
 boolean remover_dados(Lista *lista){
@@ -54,15 +54,15 @@ void horas_estudo(Lista *lista){
 }
 
 int main(void){
-    int opcao;
-    Lista * lista = lista_criar();
-    do//loop para rodar o programa até que o usuario queira sair
-    {
+    	int opcao;
+    	Lista * lista = lista_criar();
+    	do//loop para rodar o programa até que o usuario queira sair
+    	{
  		switch (opcao = menu()){
 
  			case (1)://Inserir Registro
  				if(entrada_dados(lista)==1)
-          printf("\nAluno inserido com sucesso no fim da lista!\n\n");
+          				printf("\nAluno inserido com sucesso no fim da lista!\n\n");
  			break;
 
  			case (2)://Remover Registro
@@ -72,7 +72,7 @@ int main(void){
 
  			case (3)://Imprimir Registros
  				printf("\nTodos os registros:\n\n");
-          lista_imprimir(lista);
+          			lista_imprimir(lista);
  			break;
 
  			case (4)://Relatório de Aprovação
@@ -88,9 +88,9 @@ int main(void){
  				printf("\nObrigado por utilizar nosso programa!!\n");
  			break;
  		}
-    }while(opcao != 6);
-    lista_apagar(lista);//desaloca a lista
-
+   	}while(opcao != 6);
+    	lista_apagar(&lista);//desaloca a lista
+	//lista_imprimir(lista);
 
 	return 0;
 }

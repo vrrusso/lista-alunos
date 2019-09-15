@@ -26,23 +26,24 @@ Lista * lista_criar(){
 	return(lista);
 }
 //desaloca todos os nodes e depois desaloca alista
-boolean lista_apagar(Lista * lista){
+boolean lista_apagar(Lista ** lista){
 	//programar depois, precisa desalocar Alunos(usar função) nodes e a lista em si
-	if(!lista_vazia(lista) && lista != NULL)
+	if(lista != NULL && !lista_vazia(*lista) )
 	{
-		Node * p = lista->inicio;
+		Node * p = (*lista)->inicio;
 		Node * next;
 		do
 		{
 			next=p->next;
-			aluno_apagar(p->item);
+			aluno_apagar(&p->item);
 			free(p);
 			p=next;
 		}while(p != NULL);
-		free(lista);
+		free(*lista);
 	}else{
-		free(lista);
+		free(*lista);
 	}
+	(*lista)=NULL;
 	if(lista==NULL)
 		return TRUE;
 	return FALSE;
@@ -67,7 +68,7 @@ boolean lista_vazia(Lista * lista){
 }
 //insere um elemento na lista caso ela exita e nao esteja cheia
 boolean lista_inserir(Lista * lista, Item * i){
-	if((!lista_cheia(lista)) && lista != NULL){
+	if(lista != NULL && !lista_cheia(lista) ){
 		Node * no=(Node *)malloc(sizeof(Node));
 		no->item=aluno_criar();
 		aluno_atribuir(no->item,i);
@@ -89,7 +90,7 @@ boolean lista_inserir(Lista * lista, Item * i){
 void lista_imprimir(Lista * lista){
 	Node * p;
 
-	if((!lista_vazia(lista)) && lista != NULL){
+	if(lista != NULL && !lista_vazia(lista) ){
 		p = lista->inicio;
 
 		while(p != NULL){
@@ -115,7 +116,7 @@ boolean lista_remove_item(Lista * lista, int key){
 	while(atual!=NULL && aluno_get_id(atual->item) == key){
 		aux = atual;
 		lista->inicio = aux->next;
-		aluno_apagar(aux->item);
+		aluno_apagar(&aux->item);
 		aux->next = NULL;
 		free(aux);
 		atual = lista->inicio;
@@ -130,7 +131,7 @@ boolean lista_remove_item(Lista * lista, int key){
 			}
 			aux =  atual->next;
 			atual->next = aux->next;
-			aluno_apagar(aux->item);
+			aluno_apagar(&aux->item);
 				aux->next = NULL;
             free(aux);
 			flag = TRUE;

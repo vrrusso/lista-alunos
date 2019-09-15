@@ -8,7 +8,7 @@ typedef struct lista_ Lista;
 typedef Aluno Item;
 
 Lista * lista_criar();
-boolean lista_apagar(Lista * lista);
+boolean lista_apagar(Lista ** lista);
 boolean lista_cheia(Lista * lista);
 boolean lista_vazia(Lista * lista);
 boolean lista_inserir(Lista * lista, Item * i);

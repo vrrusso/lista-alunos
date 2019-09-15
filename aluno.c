@@ -22,9 +22,9 @@ Aluno * aluno_criar(){
 }
 
 //apaga um registro de aluno
-boolean aluno_apagar(Aluno * aluno){
-	free(aluno);
-	if(aluno==NULL)
+boolean aluno_apagar(Aluno ** aluno){
+	free(*aluno);
+	if((*aluno)==NULL)
 		return TRUE;
 	return FALSE;
 }

@@ -7,7 +7,7 @@ typedef struct aluno_ Aluno;
 //cria um aluno e retorna o endereço
 Aluno * aluno_criar();
 //apaga um aluno e retorna um TRUE caso a operação ocorra bem
-boolean aluno_apagar(Aluno * aluno);
+boolean aluno_apagar(Aluno ** aluno);
 //imprime as informaçoes do aluno
 void aluno_imprimir(Aluno * aluno);
 //preenche os campos de informação de um aluno

@@ -98,7 +98,7 @@ void lista_imprimir(Lista * lista){
 		}
 		return;
 	}
-	printf("A lista está vazia ou não foi iniciada!\n");
+	printf("A lista está vazia ou não foi iniciada!\n\n");
 }
 //busca os itens por meio do id e deleta todos os que tiverem o id especificado
 boolean lista_remove_item(Lista * lista, int key){
@@ -107,7 +107,7 @@ boolean lista_remove_item(Lista * lista, int key){
 	boolean flag = FALSE;
 
 	if(atual == NULL){//caso alista esteja vazia
-		printf("Nenhum registro encontado\n");
+		printf("Nenhum registro encontado\n\n");
 		return flag;
 	}
 
@@ -145,7 +145,7 @@ void lista_imprimir_status(Lista * lista){
 	int id;
 
 	if(atual == NULL){//caso a lista esteja vazia
-		printf("Nenhum registro encontado\n");
+		printf("Nenhum registro encontado\n\n");
 		return;
 	}
 	printf("Alunos:   Status: \n");
@@ -166,7 +166,7 @@ float lista_media_horas(Lista * lista){
 	float soma = 0;
 
 	if((atual == NULL) || (lista->tamanho == 0)){
-		printf("Nenhum registro encontado");
+		printf("Nenhum registro encontado\n\n");
 		return -1;
 	}
 

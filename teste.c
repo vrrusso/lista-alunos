@@ -60,12 +60,12 @@ int main(void){
  		switch (opcao = menu()){
 
  			case (1)://Inserir Registro
- 				if(entrada_dados(lista)==1)
+ 				if(entrada_dados(lista)== TRUE)
           				printf("\nAluno inserido com sucesso no fim da lista!\n\n");
  			break;
 
  			case (2)://Remover Registro
- 				if(remover_dados(lista) == 1)
+ 				if(remover_dados(lista) == TRUE)
 					printf("\nAluno removido da lista com sucesso!\n\n");
  			break;
 

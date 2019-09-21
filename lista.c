@@ -25,9 +25,8 @@ Lista * lista_criar(){
 	}
 	return(lista);
 }
-//desaloca todos os nodes e depois desaloca alista
+//desaloca todos os nodes(apagando os alunos também) e depois desaloca a lista
 boolean lista_apagar(Lista ** lista){
-	//programar depois, precisa desalocar Alunos(usar função) nodes e a lista em si
 	if(lista != NULL && !lista_vazia(*lista) )
 	{
 		Node * p = (*lista)->inicio;

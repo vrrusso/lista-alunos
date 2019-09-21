@@ -12,7 +12,7 @@ boolean aluno_apagar(Aluno ** aluno);
 void aluno_imprimir(Aluno * aluno);
 //preenche os campos de informação de um aluno
 void aluno_set(Aluno * aluno, int id_aluno, float horas, float nota1, float nota2);
-//reorna o id de um aluno
+//retorna o id de um aluno
 int aluno_get_id(Aluno * aluno);
 //retorna o numero de horas de estudo de um aluno
 float aluno_get_horas(Aluno * aluno);

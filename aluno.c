@@ -58,7 +58,7 @@ float aluno_get_media(Aluno * aluno){
 	return (aluno->nota1+aluno->nota2)/2;
 }
 
-//caso os dois alunos exiatam a função copia as informaçoes do aluno
+//caso os dois alunos existam a função copia as informaçoes do aluno
 //origem e as insere no aluno alvo
 boolean aluno_atribuir(Aluno * aluno_alvo, Aluno * aluno_origem){//melhorar depois
 	if(aluno_alvo != NULL && aluno_origem!=NULL){

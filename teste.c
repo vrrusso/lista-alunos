@@ -17,14 +17,13 @@ int menu(){
 		printf("------------------------------\n");
 		printf("ecolha uma opção: ");
         scanf(" %c",&aux);;
-		//scanf("%d", &op);
         op=aux-'0';
         if(op<1||op>6)
             printf("\n\n\nOpção Inválida!!!\n\n\n\n");
 	}while(op<1 || op>6);
 	return op;
 }
-//recebe os dados de um alino e o insere no final da lista
+//recebe os dados de um aluno e o insere no final da lista
 boolean  entrada_dados(Lista * lista){
    	Aluno * aluno_aux = aluno_criar();
     	int id;
@@ -90,7 +89,5 @@ int main(void){
  		}
    	}while(opcao != 6);
     	lista_apagar(&lista);//desaloca a lista
-	//lista_imprimir(lista);
-
 	return 0;
 }
